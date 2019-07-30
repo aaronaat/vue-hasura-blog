@@ -1,29 +1,9 @@
-# vue-hasura-blog
+# Vue Hasura Blog
+---
+### by Aaron Taylor
+---
 
-## Project setup
-```
-yarn install
-```
+https://dev.to/hasurahq/vue-and-graphql-with-hasura-video-course-3mpp
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### Technologies Used
+Vue, Apollo, Hasura, GraphQL
