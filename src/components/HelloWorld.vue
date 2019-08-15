@@ -1,8 +1,11 @@
 <template>
   <div class="hello">
+    <ApolloQuery :query="require('.../graphql/getPosts.gql')" :variables="{limit: 1}">
+      <template slot-scope="{result: {data, error, loading}}">
+
     <ul>
 
-      <div v-if="loading">Loading...</div>
+      <div v-if="$apollo.loading">Loading...</div>
 
       <li v-for="post in posts" :key="post.id">
         {{post.title}}
@@ -13,6 +16,8 @@
       </li>
 
     </ul>
+      </template>
+      </ApolloQuery>
   </div>
 </template>
 
@@ -22,22 +27,29 @@ export default {
   name: 'HelloWorld',
   data(){
     return {
+      loading: 0,
       posts: []
     }
   },
   apollo: {
-    getPosts: {
+    posts: {
       query: gql`
-        query {
-          posts {
+        query getPosts($limit: Int) {
+          posts(limit: $limit) {
             content
             title
             id
           }
         }
       `,
-      result({data}){
-        this.posts = data.posts
+      update(data){
+        console.log("Updated", data)
+        return data.posts
+      },
+      variables(){
+        return {
+          limit: 2
+        }
       }
     }
   },
